@@ -8,7 +8,6 @@ public class ReadLineFromFIle {
         readLineFromFile("C:\\Users\\muraz\\Desktop\\myfile1.txt");
     }
 
-
 //ֆայլի ընթերցումը ըստ տողերի
     public static void readLineFromFile(String path) throws IOException {
         File file = new File(path);
