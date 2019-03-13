@@ -37,7 +37,7 @@ public class ImageUtil {
         int h = img.getHeight();
         BufferedImage dimg = dimg = new BufferedImage(w, h, img.getColorModel().getTransparency());
         Graphics2D g = dimg.createGraphics();
-        g.drawString("barev", 10,10);
+        g.drawString("barev", 10, 10);
         g.drawImage(img, 0, 0, w, h, 0, h, w, 0, null);
         g.dispose();
         return dimg;
@@ -58,13 +58,13 @@ public class ImageUtil {
 
     /**
      * նկարիր պտտում ըստ տրված անկյան
-    * */
+     */
     public static BufferedImage rotate(BufferedImage img, int angle) {
         int w = img.getWidth();
         int h = img.getHeight();
         BufferedImage dimg = dimg = new BufferedImage(w, h, img.getType());
         Graphics2D g = dimg.createGraphics();
-        g.rotate(Math.toRadians(angle), w/2, h/2);
+        g.rotate(Math.toRadians(angle), w / 2, h / 2);
         g.drawImage(img, null, 0, 0);
         return dimg;
     }
@@ -88,16 +88,16 @@ public class ImageUtil {
      * Նկարի բաժանումը մասերի ըստ տրված սյուների և տողերի թվի
      */
     public static BufferedImage[] splitImage(BufferedImage img, int cols, int rows) {
-        int w = img.getWidth()/cols;
-        int h = img.getHeight()/rows;
+        int w = img.getWidth() / cols;
+        int h = img.getHeight() / rows;
         int num = 0;
-        BufferedImage imgs[] = new BufferedImage[w*h];
-        for(int y = 0; y < rows; y++) {
-            for(int x = 0; x < cols; x++) {
+        BufferedImage imgs[] = new BufferedImage[w * h];
+        for (int y = 0; y < rows; y++) {
+            for (int x = 0; x < cols; x++) {
                 imgs[num] = new BufferedImage(w, h, img.getType());
                 // Tell the graphics to draw only one block of the image
                 Graphics2D g = imgs[num].createGraphics();
-                g.drawImage(img, 0, 0, w, h, w*x, h*y, w*x+w, h*y+h, null);
+                g.drawImage(img, 0, 0, w, h, w * x, h * y, w * x + w, h * y + h, null);
                 g.dispose();
                 num++;
             }
@@ -107,7 +107,7 @@ public class ImageUtil {
 
 
     /**
-     *նկարի քառակուսի կտրելը կենտրոնի նկատմամբ
+     * նկարի քառակուսի կտրելը կենտրոնի նկատմամբ
      */
     private static BufferedImage cropImageSquare(byte[] image) throws IOException {
         // Get a BufferedImage object from a byte array
@@ -142,9 +142,9 @@ public class ImageUtil {
     }
 
 
- /**
-  * օգտագործելով  scaleImage-ը և արդյունքը փոխանցելով resize-ին կարող ենք նկարի որակը քցել՝ լղոզելով, արդյունքում փոքրացնելով նկարի ծավալը
-  */
+    /**
+     * օգտագործելով  scaleImage-ը և արդյունքը փոխանցելով resize-ին կարող ենք նկարի որակը քցել՝ լղոզելով, արդյունքում փոքրացնելով նկարի ծավալը
+     */
     private static BufferedImage scaleImage(BufferedImage bufferedImage, int size) {
         double boundSize = size;
         int origWidth = bufferedImage.getWidth();
@@ -165,7 +165,7 @@ public class ImageUtil {
         // scaledHeight = scaledImage.getHeight(null);
         BufferedImage scaledBI = new BufferedImage(scaledWidth, scaledHeight, BufferedImage.TYPE_INT_RGB);
         Graphics2D g = scaledBI.createGraphics();
-        g.setRenderingHint(RenderingHints.KEY_INTERPOLATION,RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+        g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
         g.drawImage(scaledImage, 0, 0, null);
         g.dispose();
         return (scaledBI);
@@ -174,7 +174,7 @@ public class ImageUtil {
     public static void main(String[] args) throws IOException {
 //        BufferedImage bufferedImage = ImageUtil.loadImage ( "C: /java/image/user_pictures/es.jpg" );
         BufferedImage bufferedImage = ImageUtil.loadImage("C:\\java\\image\\user_pictures\\es.jpg");
-        BufferedImage scaleImage = scaleImage(bufferedImage,500);
+        BufferedImage scaleImage = scaleImage(bufferedImage, 500);
         BufferedImage resize = resize(scaleImage, bufferedImage.getHeight(), bufferedImage.getWidth());
         String path = "C:\\java\\image\\user_pictures\\" + System.currentTimeMillis() + ".jpg";
         File file = new File(path);

@@ -7,18 +7,19 @@ import java.io.IOException;
 public class JavaOpenFile {
 
     public static void main(String[] args) throws IOException {
-    openFileOnWindow("myFilePath");
+        openFileOnWindow("myFilePath");
 
     }
-    public static void openFileOnWindow(String filePath){
+
+    public static void openFileOnWindow(String filePath) {
         File file = new File(filePath);
         //first check if Desktop is supported by Platform or not
-        if(!Desktop.isDesktopSupported()){
+        if (!Desktop.isDesktopSupported()) {
             System.out.println("Desktop is not supported");
             return;
         }
         Desktop desktop = Desktop.getDesktop();
-        if(file.exists()) {
+        if (file.exists()) {
             try {
                 desktop.open(file);
             } catch (IOException e) {

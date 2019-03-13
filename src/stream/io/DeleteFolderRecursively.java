@@ -9,12 +9,12 @@ public class DeleteFolderRecursively {
         //delete folder recursively
         recursiveDelete(new File(folder));
     }
-    
+
     public static void recursiveDelete(File file) {
         //to end the recursive loop
         if (!file.exists())
             return;
-        
+
         //if directory, go inside and call recursively
         if (file.isDirectory()) {
             for (File f : file.listFiles()) {
@@ -24,7 +24,7 @@ public class DeleteFolderRecursively {
         }
         //call delete to delete files and empty directory
         file.delete();
-        System.out.println("Deleted file/folder: "+file.getAbsolutePath());
+        System.out.println("Deleted file/folder: " + file.getAbsolutePath());
     }
 
 }

@@ -13,24 +13,26 @@ public class WriteFile {
 
     /**
      * This class shows how to write file in java
+     *
      * @param args
-     * @throws IOException 
+     * @throws IOException
      */
     public static void main(String[] args) {
         String data = "I will write this String to File in Java";
         int noOfLines = 10000;
         writeUsingFileWriter(data);
-        
+
         writeUsingBufferedWriter(data, noOfLines);
-        
+
         writeUsingFiles(data);
-        
+
         writeUsingOutputStream(data);
         System.out.println("DONE");
     }
 
     /**
      * Use Streams when you are dealing with raw data
+     *
      * @param data
      */
     private static void writeUsingOutputStream(String data) {
@@ -40,7 +42,7 @@ public class WriteFile {
             os.write(data.getBytes(), 0, data.length());
         } catch (IOException e) {
             e.printStackTrace();
-        }finally{
+        } finally {
             try {
                 os.close();
             } catch (IOException e) {
@@ -48,9 +50,10 @@ public class WriteFile {
             }
         }
     }
-    
+
     /**
      * Use Files class from Java 1.7 to write files, internally uses OutputStream
+     *
      * @param data
      */
     private static void writeUsingFiles(String data) {
@@ -64,6 +67,7 @@ public class WriteFile {
     /**
      * Use BufferedWriter when number of write operations are more
      * It uses internal buffer to reduce real IO operations and saves time
+     *
      * @param data
      * @param noOfLines
      */
@@ -71,16 +75,16 @@ public class WriteFile {
         File file = new File("filePath");
         FileWriter fr = null;
         BufferedWriter br = null;
-        String dataWithNewLine=data+System.getProperty("line.separator");
-        try{
+        String dataWithNewLine = data + System.getProperty("line.separator");
+        try {
             fr = new FileWriter(file);
             br = new BufferedWriter(fr);
-            for(int i = noOfLines; i>0; i--){
+            for (int i = noOfLines; i > 0; i--) {
                 br.write(dataWithNewLine);
             }
         } catch (IOException e) {
             e.printStackTrace();
-        }finally{
+        } finally {
             try {
                 br.close();
                 fr.close();
@@ -92,6 +96,7 @@ public class WriteFile {
 
     /**
      * Use FileWriter when number of write operations are less
+     *
      * @param data
      */
     private static void writeUsingFileWriter(String data) {
@@ -102,7 +107,7 @@ public class WriteFile {
             fr.write(data);
         } catch (IOException e) {
             e.printStackTrace();
-        }finally{
+        } finally {
             //close resources
             try {
                 fr.close();

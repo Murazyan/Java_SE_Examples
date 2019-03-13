@@ -25,7 +25,6 @@ public class ImageTest {
         BufferedImage originalImage = loadImage("C:\\Users\\muraz\\Desktop\\image.jpg");
 
 
-
         // Get image dimensions
         int height = originalImage.getHeight();
         int width = originalImage.getWidth();
@@ -41,9 +40,9 @@ public class ImageTest {
         // Coordinates of the image's middle
         int xc = width / 2;
         int yc = height / 2;
-        System.out.println("x coordinate of upper-left corner "+xc);
-        System.out.println("y coordinate of upper-left corner "+yc);
-        System.out.println("squarSize "+squareSize);
+        System.out.println("x coordinate of upper-left corner " + xc);
+        System.out.println("y coordinate of upper-left corner " + yc);
+        System.out.println("squarSize " + squareSize);
 
         // Crop
 //        BufferedImage croppedImage = originalImage.getSubimage(
@@ -70,12 +69,12 @@ public class ImageTest {
 //        graphics.fill(new Rectangle(500,740,1000,2000));
 //        graphics.fill3DRect(500,740,1000,2000,false);
 //        Graphics g = newImage.getGraphics();
-        BufferedImage newImage = new BufferedImage(originalImage.getWidth()+2*25, originalImage.getHeight(), originalImage.getType());
+        BufferedImage newImage = new BufferedImage(originalImage.getWidth() + 2 * 25, originalImage.getHeight(), originalImage.getType());
 
         Graphics g = newImage.getGraphics();
 
         g.setColor(Color.red);
-        g.fillRect(0,0,originalImage.getWidth()+2*25,originalImage.getHeight());
+        g.fillRect(0, 0, originalImage.getWidth() + 2 * 25, originalImage.getHeight());
         g.drawImage(originalImage, 25, 0, null);
         g.dispose();
 
@@ -97,12 +96,13 @@ public class ImageTest {
         }
         return bimg;
     }
+
     public static BufferedImage verticalflip(BufferedImage img) {
         int w = img.getWidth();
         int h = img.getHeight();
         BufferedImage dimg = dimg = new BufferedImage(w, h, img.getColorModel().getTransparency());
         Graphics2D g = dimg.createGraphics();
-        g.drawString("barefdgdfffdgfdgffdgfddgfdgdgfgdfgfdgdfgdfgdfgdfgdfgdfgdfdddddddddddddddddddddddv", 370,350);
+        g.drawString("barefdgdfffdgfdgffdgfddgfdgdgfgdfgfdgdfgdfgdfgdfgdfgdfgdfdddddddddddddddddddddddv", 370, 350);
         g.drawImage(img, 0, 0, w, h, 0, h, w, 0, null);
         g.dispose();
         return dimg;
